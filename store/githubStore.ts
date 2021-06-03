@@ -1,0 +1,81 @@
+import { getAccessorType } from 'typed-vuex';
+import getAllOpenPRData from '~/schema/GetAllOpenPRData.gql';
+import MergePR from '~/schema/MergePR.gql';
+
+export const state = () => ({
+  prs: {} as GitHubStore.Full_PR_Data,
+});
+
+export const getters: GitHubStore.Getters = {
+  getRepos(state) {
+    const repos: Array<string> = [];
+    state.prs.data.viewer.repositories.nodes.forEach((node) =>
+      repos.push(node.name)
+    );
+    return () => repos;
+  },
+  getAllOpenPRData(state) {
+    const filteredRepos: Array<unknown> = [];
+    state.prs.data.viewer.repositories.nodes.filter((node) => {
+      if (node.pullRequests.nodes.length > 0) {
+        filteredRepos.push({
+          id: node.id,
+          repo: node.name,
+          prs: node.pullRequests.nodes,
+        });
+      }
+    });
+
+    return () => filteredRepos as Array<GitHubStore.PR_Data>;
+  },
+  getPRDataByRepo(state, getters) {
+    const allOpenPRs = getters.getAllOpenPRData(state)();
+    return (repoId) => {
+      const requiredRepo = allOpenPRs.filter((repo) => repo.id === repoId)[0];
+      return requiredRepo;
+    };
+  },
+};
+
+export const mutations: GitHubStore.Mutations = {
+  SET_PR_DATA(state, payload) {
+    state.prs = payload;
+  },
+};
+
+export const actions: GitHubStore.Actions = {
+  async GET_PR_DATA_FROM_API(this) {
+    const data = (await this.app.apolloProvider?.defaultClient.query({
+      query: getAllOpenPRData,
+      context: {
+        headers: {
+          Authorization: `Bearer ${this.app.$config.token}`,
+        },
+      },
+    })) as GitHubStore.Full_PR_Data;
+    this.$accessor.githubStore.SET_PR_DATA(data);
+    return data;
+  },
+  async MERGE_PR(this, {}, pullRequestId) {
+    const result = await this.app.apolloProvider?.defaultClient.mutate({
+      mutation: MergePR,
+      variables: {
+        pullRequestId,
+      },
+      context: {
+        headers: {
+          Authorization: `Bearer ${this.app.$config.token}`,
+        },
+      },
+    });
+    this.$accessor.githubStore.GET_PR_DATA_FROM_API();
+    return result as GitHubStore.Merge_Result;
+  },
+};
+
+export const accessorType = getAccessorType({
+  state,
+  mutations,
+  actions,
+  modules: {},
+});

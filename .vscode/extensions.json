@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "octref.vetur",
+    "vuetifyjs.vuetify-vscode",
+    "lukas-tr.materialdesignicons-intellisense",
+    "msjsdiag.debugger-for-chrome",
+    "firefox-devtools.vscode-firefox-debug",
+    "hangxingliu.vscode-nginx-conf-hint",
+    "esbenp.prettier-vscode",
+    "syler.sass-indented",
+    "ms-azuretools.vscode-docker",
+    "dbaeumer.vscode-eslint"
+  ]
+}
