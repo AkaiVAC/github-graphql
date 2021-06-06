@@ -32,11 +32,6 @@
     "./node_modules/vuetify/types",
     "./typings"
   ],
-  "include": [
-    "**/*.ts",
-    "**/*.vue",
-    "static/appsettings.json",
-    "static/appsettings.template.json"
-  ],
-  "exclude": ["node_modules", ".nuxt", "dist", "e2e"]
+  "include": ["**/*.ts", "**/*.vue"],
+  "exclude": ["node_modules", ".nuxt", "dist"]
 }

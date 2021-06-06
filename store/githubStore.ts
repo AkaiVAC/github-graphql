@@ -1,30 +1,32 @@
 import { getAccessorType } from 'typed-vuex';
 import getAllOpenPRData from '~/schema/GetAllOpenPRData.gql';
 import MergePR from '~/schema/MergePR.gql';
+import GetProjectLevelPRs from '~/schema/GetProjectLevelPRs.gql';
 
 export const state = () => ({
-  prs: {} as GitHubStore.Full_PR_Data,
+  projects: {} as GitHubStore.Full_PR_Data,
+  prs: {} as GitHubStore.Project_PR_Data,
 });
 
 export const getters: GitHubStore.Getters = {
   getRepos(state) {
     const repos: Array<string> = [];
-    state.prs.data.viewer.repositories.nodes.forEach((node) =>
+    state.projects.data.viewer.repositories.nodes.forEach((node) =>
       repos.push(node.name)
     );
     return () => repos;
   },
   getAllOpenPRData(state) {
     const filteredRepos: Array<unknown> = [];
-    state.prs.data.viewer.repositories.nodes.filter((node) => {
-      if (node.pullRequests.nodes.length > 0) {
+    state.projects.data.viewer.repositories.nodes.filter(
+      (node) =>
+        node.pullRequests.nodes.length > 0 &&
         filteredRepos.push({
           id: node.id,
           repo: node.name,
           prs: node.pullRequests.nodes,
-        });
-      }
-    });
+        })
+    );
 
     return () => filteredRepos as Array<GitHubStore.PR_Data>;
   },
@@ -38,6 +40,9 @@ export const getters: GitHubStore.Getters = {
 };
 
 export const mutations: GitHubStore.Mutations = {
+  SET_PROJECT_DATA(state, payload) {
+    state.projects = payload;
+  },
   SET_PR_DATA(state, payload) {
     state.prs = payload;
   },
@@ -53,8 +58,26 @@ export const actions: GitHubStore.Actions = {
         },
       },
     })) as GitHubStore.Full_PR_Data;
-    this.$accessor.githubStore.SET_PR_DATA(data);
+    this.$accessor.githubStore.SET_PROJECT_DATA(data);
     return data;
+  },
+  async GET_PROJECT_PR_FROM_API(this, {}, repoName) {
+    const data = (await this.app.apolloProvider?.defaultClient.query({
+      query: GetProjectLevelPRs,
+      context: {
+        headers: {
+          Authorization: `Bearer ${this.app.$config.token}`,
+        },
+      },
+      variables: {
+        repoName,
+      },
+    })) as Record<'data', { viewer: { repository: object } }>;
+
+    this.$accessor.githubStore.SET_PR_DATA(
+      data.data.viewer.repository as GitHubStore.Project_PR_Data
+    );
+    return data.data.viewer.repository as GitHubStore.Project_PR_Data;
   },
   async MERGE_PR(this, {}, pullRequestId) {
     const result = await this.app.apolloProvider?.defaultClient.mutate({

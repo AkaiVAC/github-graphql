@@ -6,7 +6,7 @@
     transition="scale-transition"
     origin="top center"
   >
-    <template v-slot:activator="{ on, attrs }" v-if="$auth.loggedIn">
+    <template #activator="{ on, attrs }" v-if="$auth.loggedIn">
       <v-btn
         class="user_info header_btn"
         text
@@ -102,7 +102,7 @@
       active: false,
     }),
     methods: {
-      repoUrl: function (location: string = ''): string {
+      repoUrl(location: string = ''): string {
         return `https://github.com/${this.$auth?.user?.login ?? ''}${location}`;
       },
       async copyText(text: string): Promise<void> {

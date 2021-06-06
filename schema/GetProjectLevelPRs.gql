@@ -1,0 +1,24 @@
+query GetProjectLevelPRs($repoName: String!) {
+  viewer {
+    repository(name: $repoName) {
+      name
+      pullRequests(first: 30, states: [OPEN]) {
+        nodes {
+          id
+          number
+          title
+          url
+          author {
+            avatarUrl
+            login
+            url
+          }
+          potentialMergeCommit {
+            abbreviatedOid
+            changedFiles
+          }
+        }
+      }
+    }
+  }
+}

@@ -18,6 +18,7 @@ module.exports = {
   plugins: ['prettier', 'vuetify'],
   rules: {
     eqeqeq: 'error',
+    camelcase: 'off',
     'no-undef': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',

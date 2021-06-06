@@ -80,12 +80,12 @@ describe('GitHub Store', () => {
 
   describe('Getters', () => {
     it('gets all repository names when "getRepos" is fired', () => {
-      store.state.prs = samplePRs;
+      store.state.projects = samplePRs;
       const allRepos = typedStore.getRepos();
       expect(allRepos).toStrictEqual(['Some Repo', 'Some Other Repo']);
     });
     it('gets PR Data by repo in the expected format when "getAllOpenPRData" is fired', () => {
-      store.state.prs = samplePRs;
+      store.state.projects = samplePRs;
       const dataFromGetter = typedStore.getAllOpenPRData();
       expect(dataFromGetter).toStrictEqual([
         {
@@ -107,7 +107,7 @@ describe('GitHub Store', () => {
       ]);
     });
     it('gets repository specific PRs when "getPRDataByRepo" is fired', () => {
-      store.state.prs = samplePRs;
+      store.state.projects = samplePRs;
       const repoPRs = typedStore.getPRDataByRepo('1');
       expect(repoPRs).toStrictEqual({
         id: '1',
@@ -121,9 +121,9 @@ describe('GitHub Store', () => {
   });
 
   describe('Mutations', () => {
-    it('sets PRs to correct value when "SET_PR_DATA" is fired', () => {
-      typedStore.SET_PR_DATA(samplePRs);
-      expect(typedStore.prs).toStrictEqual(samplePRs);
+    it('sets PRs to correct value when "SET_PROJECT_DATA" is fired', () => {
+      typedStore.SET_PROJECT_DATA(samplePRs);
+      expect(typedStore.projects).toStrictEqual(samplePRs);
     });
   });
 
@@ -133,7 +133,7 @@ describe('GitHub Store', () => {
       await typedStore.GET_PR_DATA_FROM_API();
 
       expect(spyCommit).toHaveBeenCalled();
-      expect(typedStore.prs).toStrictEqual(samplePRs);
+      expect(typedStore.projects).toStrictEqual(samplePRs);
     });
     it('merges Pull Request based on ID when "MERGE_PR" is fired', async () => {
       const spyCommit = jest.spyOn(typedStore, 'MERGE_PR');
