@@ -47,6 +47,16 @@ declare module GitHubStore {
     };
   };
 
+  type Close_Result = {
+    data: {
+      closePullRequest: {
+        pullRequest: {
+          id: string;
+        };
+      };
+    };
+  };
+
   type Merge_Result = {
     data: {
       mergePullRequest: {
@@ -82,6 +92,11 @@ declare module GitHubStore {
       { state, commit }: ActionContext,
       repoName: string
     ): Promise<Project_PR_Data>;
+    CLOSE_PR(
+      this: Store,
+      { state, commit }: ActionContext,
+      pullRequestId: string
+    ): Promise<Close_Result>;
     MERGE_PR(
       this: Store,
       { state, commit }: ActionContext,
