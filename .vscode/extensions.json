@@ -1,13 +1,13 @@
 {
-  "recommendations": [
-    "octref.vetur",
-    "vuetifyjs.vuetify-vscode",
-    "lukas-tr.materialdesignicons-intellisense",
-    "msjsdiag.debugger-for-chrome",
-    "firefox-devtools.vscode-firefox-debug",
-    "esbenp.prettier-vscode",
-    "syler.sass-indented",
-    "ms-azuretools.vscode-docker",
-    "dbaeumer.vscode-eslint"
-  ]
+    "recommendations": [
+        "coenraads.bracket-pair-colorizer-2",
+        "octref.vetur",
+        "vuetifyjs.vuetify-vscode",
+        "lukas-tr.materialdesignicons-intellisense",
+        "msjsdiag.debugger-for-chrome",
+        "firefox-devtools.vscode-firefox-debug",
+        "esbenp.prettier-vscode",
+        "syler.sass-indented",
+        "dbaeumer.vscode-eslint"
+    ]
 }

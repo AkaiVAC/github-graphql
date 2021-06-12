@@ -1,7 +1,7 @@
 mutation closePR($pullRequestId: ID!) {
-  closePullRequest(input: { pullRequestId: $pullRequestId }) {
-    pullRequest {
-      id
+    closePullRequest(input: { pullRequestId: $pullRequestId }) {
+        pullRequest {
+            id
+        }
     }
-  }
 }

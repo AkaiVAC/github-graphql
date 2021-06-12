@@ -1,18 +1,18 @@
 query getAllOpenPRData {
-  viewer {
-    login
-    repositories(first: 50) {
-      nodes {
-        id
-        name
-        url
-        pullRequests(states: OPEN, first: 50) {
-          nodes {
-            id
-            url
-          }
+    viewer {
+        login
+        repositories(first: 50) {
+            nodes {
+                id
+                name
+                url
+                pullRequests(states: OPEN, first: 50) {
+                    nodes {
+                        id
+                        url
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }

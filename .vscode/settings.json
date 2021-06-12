@@ -1,49 +1,52 @@
 {
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
-  "editor.detectIndentation": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "razor": "html"
-  },
-  "emmet.syntaxProfiles": {
-    "vue": "html"
-  },
-  "nginx-conf-hint.syntax": "sublime",
-  "prettier.jsxBracketSameLine": true,
-  "prettier.jsxSingleQuote": true,
-  "prettier.vueIndentScriptAndStyle": true,
-  "prettier.singleQuote": true,
-  "prettier.useEditorConfig": false,
-  "prettier.trailingComma": "all",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "vetur.format.defaultFormatter.html": "prettier",
-  "vetur.format.enable": false,
-  "vetur.format.scriptInitialIndent": true,
-  "vetur.format.styleInitialIndent": true
+    "editor.lineHeight": 22,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "razor": "html"
+    },
+    "emmet.syntaxProfiles": {
+        "vue": "html"
+    },
+    "prettier.jsxBracketSameLine": true,
+    "prettier.jsxSingleQuote": true,
+    "prettier.vueIndentScriptAndStyle": true,
+    "prettier.singleQuote": true,
+    "prettier.useEditorConfig": false,
+    "prettier.trailingComma": "all",
+    "prettier.tabWidth": 4,
+    "prettier.useTabs": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "vetur.format.options.useTabs": true,
+    "vetur.format.options.tabSize": 4,
+    "vetur.format.defaultFormatter.html": "prettier",
+    "vetur.format.enable": false,
+    "vetur.format.scriptInitialIndent": true,
+    "vetur.format.styleInitialIndent": true
 }
