@@ -9,17 +9,19 @@
         </div>
         <v-card-text v-else>
             <h2 class="font-weight-light mb-3">
-                {{ prs.name }}&nbsp;
-                <a
-                    class="transparent"
+                <v-chip
+                    link
+                    label
+                    class="transparent text-h6"
                     :href="repoUrl(prs.name)"
                     target="_blank"
                     title="Open PR in a new tab"
                 >
+                    {{ prs.name }}&nbsp;
                     <v-icon small>{{ icons.mdiOpenInNew }}</v-icon>
-                </a>
+                </v-chip>
             </h2>
-            <PRList :prs="prs" />
+            <PRList :prs="prs" @send="forceRerender" />
         </v-card-text>
     </v-card>
 </template>
