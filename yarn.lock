@@ -2043,7 +2043,7 @@
     webpack-node-externals "^3.0.0"
     webpackbar "^4.0.0"
 
-"@nuxtjs/apollo@^4.0.1-rc.5":
+"@nuxtjs/apollo@4.0.1-rc.5":
   version "4.0.1-rc.5"
   resolved "https://registry.yarnpkg.com/@nuxtjs/apollo/-/apollo-4.0.1-rc.5.tgz#3d6a81971740bf3a3990524b908e2df556393b9d"
   integrity sha512-A5ITCdks87NND6t116nBFTqENiMfUYkFy+b8xDTRV4rz5NHhpYAfoDZDRKDnlszOBYOCvBjro/GDJH+KWW7siQ==
@@ -2069,7 +2069,7 @@
     jwt-decode "^3.1.2"
     requrl "^3.0.2"
 
-"@nuxtjs/axios@^5.13.0", "@nuxtjs/axios@^5.13.5":
+"@nuxtjs/axios@5.13.6", "@nuxtjs/axios@^5.13.0":
   version "5.13.6"
   resolved "https://registry.yarnpkg.com/@nuxtjs/axios/-/axios-5.13.6.tgz#6f4bbd98a3a7799a5d2c0726c6ad2a98aa111881"
   integrity sha512-XS+pOE0xsDODs1zAIbo95A0LKlilvJi8YW0NoXYuq3/jjxGgWDxizZ6Yx0AIIjZOoGsXJOPc0/BcnSEUQ2mFBA==
@@ -9597,7 +9597,7 @@ jest-snapshot@^26.6.2:
     pretty-format "^26.6.2"
     semver "^7.3.2"
 
-jest-transform-graphql@^2.1.0:
+jest-transform-graphql@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/jest-transform-graphql/-/jest-transform-graphql-2.1.0.tgz#903cb66bb27bc2772fd3e5dd4f7e9b57230f5829"
   integrity sha1-kDy2a7J7wncv0+XdT36bVyMPWCk=
@@ -12972,7 +12972,7 @@ sass@1.32.12, sass@^1.32.4:
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
-sass@~1.32.12:
+sass@1.32.13:
   version "1.32.13"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.13.tgz#8d29c849e625a415bce71609c7cf95e15f74ed00"
   integrity sha512-dEgI9nShraqP7cXQH+lEXVf73WOPCse0QlFzSD8k+1TcOxCMwVXfQlr0jtoluZysQOyJGnfr21dLvYKDJq8HkA==
