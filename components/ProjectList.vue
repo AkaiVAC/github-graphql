@@ -1,6 +1,6 @@
 <template>
-	<v-card :loading="loading" class="fill-height">
-		<v-card-title> Projects With Open PRs </v-card-title>
+	<v-card :loading="loading">
+		<code class="v-card__title pl-4"> Projects With Open PRs </code>
 		<v-list>
 			<v-list-item-group>
 				<v-list-item
@@ -64,3 +64,9 @@
 		},
 	});
 </script>
+<style lang="scss" scoped>
+	.v-list {
+		max-height: 78vmin;
+		overflow-y: auto;
+	}
+</style>

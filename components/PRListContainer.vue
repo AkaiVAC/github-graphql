@@ -21,7 +21,7 @@
 					<v-icon small>{{ icons.mdiOpenInNew }}</v-icon>
 				</v-chip>
 			</h2>
-			<PRList :prs="prs" @send="forceRerender" />
+			<PRList :prs="prs" />
 		</v-card-text>
 	</v-card>
 </template>

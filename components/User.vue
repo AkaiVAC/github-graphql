@@ -5,15 +5,10 @@
 		:close-on-content-click="false"
 		transition="scale-transition"
 		origin="top center"
+		v-if="$auth.loggedIn"
 	>
 		<template #activator="{ on, attrs }" v-if="$auth.loggedIn">
-			<v-btn
-				class="user_info header_btn"
-				text
-				v-if="$auth.loggedIn"
-				v-on="on"
-				v-bind="attrs"
-			>
+			<v-btn class="user_info header_btn" text v-on="on" v-bind="attrs">
 				<v-avatar left class="mr-3" size="28">
 					<img
 						:src="$auth.user.avatar_url"

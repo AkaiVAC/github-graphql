@@ -86,6 +86,7 @@ declare module GitHubStore {
 	type Mutations<S = State> = {
 		SET_PROJECT_DATA(state: S, payload: Full_PR_Data): void;
 		SET_PR_DATA(state: S, payload: Project_PR_Data): void;
+		UPDATE_PR_DATA(state: S, payload: string): void;
 	};
 
 	type Actions = {
@@ -103,7 +104,7 @@ declare module GitHubStore {
 		MERGE_PR(
 			this: Store,
 			{ state, commit }: ActionContext,
-			pullRequestId: string,
+			repoDetails: string,
 		): Promise<Merge_Result>;
 	};
 }

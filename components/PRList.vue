@@ -117,8 +117,8 @@
 					show: true,
 				};
 			},
-			async mergePR(ID: string): Promise<void> {
-				await this.$accessor.githubStore.MERGE_PR(ID);
+			async mergePR(pullRequestId: string): Promise<void> {
+				await this.$accessor.githubStore.MERGE_PR(pullRequestId);
 				this.snackbar = {
 					text: 'PR Merged',
 					color: 'success',
@@ -164,7 +164,7 @@
 		}
 	}
 	.v-list {
-		max-height: 80vh;
+		max-height: 75vmin;
 		overflow-y: auto;
 	}
 </style>

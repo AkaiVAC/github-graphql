@@ -51,6 +51,14 @@ export const mutations: GitHubStore.Mutations = {
 	SET_PR_DATA(state, payload) {
 		state.prs = payload;
 	},
+	UPDATE_PR_DATA(state, payload) {
+		state.prs.pullRequests.nodes = state.prs.pullRequests.nodes.filter(
+			(node) => node.id !== payload,
+		) as typeof state.prs.pullRequests.nodes;
+		if (!state.prs.pullRequests.nodes.length) {
+			window.location.reload();
+		}
+	},
 };
 
 export const actions: GitHubStore.Actions = {
@@ -111,7 +119,8 @@ export const actions: GitHubStore.Actions = {
 				},
 			},
 		});
-		this.$accessor.githubStore.GET_PR_DATA_FROM_API();
+		this.$accessor.githubStore.UPDATE_PR_DATA(pullRequestId);
+
 		return result as GitHubStore.Merge_Result;
 	},
 };
