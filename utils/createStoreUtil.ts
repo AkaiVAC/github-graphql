@@ -18,33 +18,33 @@ import { useAccessor } from 'typed-vuex';
  * 
  */
 export default function <S>({
-    name,
-    module,
-    mocks,
-    appMocks,
+	name,
+	module,
+	mocks,
+	appMocks,
 }: {
-    name: string;
-    module: Module<S, S>;
-    mocks?: object;
-    appMocks?: object;
+	name: string;
+	module: Module<S, S>;
+	mocks?: object;
+	appMocks?: object;
 }): Store<S> {
-    const store = new Vuex.Store({
-        state: module.state,
-        getters: module.getters,
-        mutations: module.mutations,
-        actions: module.actions,
-        modules: module.modules,
-    });
-    const $accessor = useAccessor(store, {
-        modules: {
-            [name]: module,
-        },
-    });
+	const store = new Vuex.Store({
+		state: module.state,
+		getters: module.getters,
+		mutations: module.mutations,
+		actions: module.actions,
+		modules: module.modules,
+	});
+	const $accessor = useAccessor(store, {
+		modules: {
+			[name]: module,
+		},
+	});
 
-    Object.assign(store, {
-        app: { $accessor, ...appMocks },
-        ...mocks,
-        $accessor,
-    });
-    return store;
+	Object.assign(store, {
+		app: { $accessor, ...appMocks },
+		...mocks,
+		$accessor,
+	});
+	return store;
 }
