@@ -48,7 +48,7 @@
 		"jest": "26.6.3",
 		"jest-transform-graphql": "2.1.0",
 		"prettier": "2.3.2",
-		"sass": "1.32.13",
+		"sass": "1.35.2",
 		"ts-jest": "26.5.6",
 		"ts-loader": "9.0.1",
 		"ts-node": "10.1.0",
@@ -56,6 +56,6 @@
 		"vue-jest": "3.0.7"
 	},
 	"resolutions": {
-		"@nuxtjs/vuetify/**/sass": "1.32.12"
+		"@nuxtjs/vuetify/**/sass": "1.35.2"
 	}
 }
