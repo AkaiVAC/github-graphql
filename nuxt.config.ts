@@ -66,7 +66,7 @@ const config: NuxtConfig = {
 	},
 
 	vuetify: {
-		customVariables: ['~/assets/scss/variables.scss'],
+		customVariables: ['~/assets/scss/globals.scss'],
 		options: { customProperties: true },
 		defaultAssets: false,
 		treeShake: true,
