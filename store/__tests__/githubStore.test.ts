@@ -61,6 +61,44 @@ describe('GitHub Store', () => {
 		},
 	};
 
+	const samplePRData: GitHubStore.Project_PR_Data = {
+		name: 'some_name',
+		pullRequests: {
+			nodes: [
+				{
+					author: {
+						avatarUrl: 'http://avatar-url',
+						login: 'author-login',
+						url: 'author-url',
+					},
+					id: 'some_id',
+					number: 12,
+					potentialMergeCommit: {
+						abbreviatedOid: '123-id',
+						changedFiles: 2,
+					},
+					title: 'some_title',
+					url: 'http://some_url',
+				},
+				{
+					author: {
+						avatarUrl: 'http://avatar-url',
+						login: 'author-login',
+						url: 'author-url',
+					},
+					id: 'some_id_2',
+					number: 13,
+					potentialMergeCommit: {
+						abbreviatedOid: '1233-id',
+						changedFiles: 2,
+					},
+					title: 'some_title_2',
+					url: 'http://some_url_2',
+				},
+			],
+		},
+	};
+
 	beforeEach(() => {
 		store = createStoreUtil({
 			name: 'githubStore',
@@ -82,6 +120,13 @@ describe('GitHub Store', () => {
 				},
 				$config: {
 					token: 'sample_token',
+				},
+			},
+			mocks: {
+				window: {
+					location: {
+						reload: () => jest.fn(),
+					},
 				},
 			},
 		});
@@ -131,9 +176,18 @@ describe('GitHub Store', () => {
 	});
 
 	describe('Mutations', () => {
-		it('sets PRs to correct value when "SET_PROJECT_DATA" is fired', () => {
+		it('sets projects state to correct value when "SET_PROJECT_DATA" is fired', () => {
 			typedStore.SET_PROJECT_DATA(samplePRs);
 			expect(typedStore.projects).toStrictEqual(samplePRs);
+		});
+		it('sets PRs to correct value when "SET_PR_DATA" is fired', () => {
+			typedStore.SET_PR_DATA(samplePRData);
+			expect(typedStore.prs).toStrictEqual(samplePRData);
+		});
+		it('updates PRs to correct value when "UPDATE_PR_DATA" is fired', () => {
+			store.state.prs = samplePRData;
+			typedStore.UPDATE_PR_DATA('some_id');
+			expect(typedStore.prs.pullRequests.nodes.length).toBe(1);
 		});
 	});
 
@@ -146,8 +200,9 @@ describe('GitHub Store', () => {
 			expect(typedStore.projects).toStrictEqual(samplePRs);
 		});
 		it('merges Pull Request based on ID when "MERGE_PR" is fired', async () => {
+			store.state.prs = samplePRData;
 			const spyCommit = jest.spyOn(typedStore, 'MERGE_PR');
-			const spyDispatch = jest.spyOn(typedStore, 'GET_PR_DATA_FROM_API');
+			const spyDispatch = jest.spyOn(typedStore, 'UPDATE_PR_DATA');
 			const result = await typedStore.MERGE_PR('some_id');
 
 			expect(spyCommit).toHaveBeenCalled();

@@ -27,23 +27,21 @@ declare module GitHubStore {
 	type Project_PR_Data = {
 		name: string;
 		pullRequests: {
-			nodes: [
-				{
-					id: string;
-					number: number;
-					title: string;
+			nodes: Array<{
+				id: string;
+				number: number;
+				title: string;
+				url: string;
+				author: {
+					avatarUrl: string;
+					login: string;
 					url: string;
-					author: {
-						avatarUrl: string;
-						login: string;
-						url: string;
-					};
-					potentialMergeCommit: {
-						abbreviatedOid: string;
-						changedFiles: 2;
-					};
-				},
-			];
+				};
+				potentialMergeCommit: {
+					abbreviatedOid: string;
+					changedFiles: 2;
+				};
+			}>;
 		};
 	};
 

@@ -54,7 +54,7 @@ export const mutations: GitHubStore.Mutations = {
 	UPDATE_PR_DATA(state, payload) {
 		state.prs.pullRequests.nodes = state.prs.pullRequests.nodes.filter(
 			(node) => node.id !== payload,
-		) as typeof state.prs.pullRequests.nodes;
+		);
 		if (!state.prs.pullRequests.nodes.length) {
 			window.location.reload();
 		}
