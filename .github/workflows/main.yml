@@ -22,6 +22,6 @@ jobs:
             - name: Install project
               run: yarn
             - name: Build the project
-              run: yarn build
+              run: yarn generate
             - name: Run tests
               run: yarn test
