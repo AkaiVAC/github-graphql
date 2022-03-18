@@ -1,7 +1,7 @@
 {
 	"builds": [
-		{ "src": "package.json", "use": "@now/static-build" },
-		{ "src": "/functions/*.js", "use": "@now/node" }
+		{ "src": "package.json", "use": "@vercel/static-build" },
+		{ "src": "/functions/*.js", "use": "@vercel/node" }
 	],
 	"routes": [
 		{

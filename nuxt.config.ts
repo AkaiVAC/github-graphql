@@ -5,8 +5,8 @@ import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 import colors from 'vuetify/es5/util/colors';
 
 const config: NuxtConfig = {
-	ssr: true,
-	target: 'server',
+	ssr: false,
+	target: 'static',
 	telemetry: false,
 
 	head: {
