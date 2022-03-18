@@ -9,15 +9,5 @@
 			"methods": ["POST"],
 			"dest": "/functions/authorize.js"
 		}
-	],
-	"env": {
-		"GITHUB_CLIENT_ID": "4ab8d862bd79b7f36a73",
-		"GITHUB_CLIENT_SECRET": "53c4884598593e6b74b3a5015c54cd48e9feb790"
-	},
-	"build": {
-		"env": {
-			"GITHUB_CLIENT_ID": "4ab8d862bd79b7f36a73",
-			"GITHUB_CLIENT_SECRET": "53c4884598593e6b74b3a5015c54cd48e9feb790"
-		}
-	}
+	]
 }
