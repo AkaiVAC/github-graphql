@@ -32,6 +32,6 @@
 		"./node_modules/vuetify/types",
 		"./typings"
 	],
-	"include": ["**/*.ts", "**/*.vue"],
+	"include": ["**/*.ts", "**/*.vue", "functions/authorize.js"],
 	"exclude": ["node_modules", ".nuxt", "dist"]
 }

@@ -5,8 +5,8 @@ import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 import colors from 'vuetify/es5/util/colors';
 
 const config: NuxtConfig = {
-	ssr: false,
-	target: 'static',
+	ssr: true,
+	target: 'server',
 	telemetry: false,
 
 	head: {
@@ -20,7 +20,7 @@ const config: NuxtConfig = {
 				hid: 'description',
 				name: 'description',
 				content:
-					'This application enables creation of pupil ability groups',
+					'This application allows the user to merge their GitHub pull-requests from a simple to use interface.',
 			},
 			{
 				hid: 'theme-color',
