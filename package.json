@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "nuxt",
-		"build": "nuxt generate",
+		"build": "nuxt build",
 		"start": "nuxt start",
 		"start:docker": "cross-var docker build -t $npm_package_name . && cross-var docker run --rm -d -e Environment=Development -p 3000:80 --name $npm_package_name $npm_package_name:latest",
 		"generate": "nuxt generate",
